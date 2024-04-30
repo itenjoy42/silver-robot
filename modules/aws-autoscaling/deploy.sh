@@ -19,4 +19,4 @@ yum install mysql-server -y
 systemctl start mysqld
 systemctl enable mysqld
 
-yum amazon-linux-extras install aws-agent -y
+yum install amazon-cloudwatch-agent -y

@@ -3,8 +3,8 @@ data "aws_route53_zone" "zone" {
   private_zone = false
 }
 
-data "aws_lb" "web-alb" {
-  name = var.alb-name
+data "aws_lb" "web-elb" {
+  name = var.web-alb-name
 }
 
 data "aws_acm_certificate" "cert" {

@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
   origin {
-    domain_name = data.aws_lb.web-alb.dns_name
-    origin_id   = "my-web-alb"
+    domain_name = data.aws_lb.web-elb.dns_name
+    origin_id   = "Web-elb"
 
     custom_origin_config {
       http_port              = 80
@@ -21,7 +21,7 @@ resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "my-web-alb"
+    target_origin_id = "Web-elb"
 
     forwarded_values {
       query_string = false

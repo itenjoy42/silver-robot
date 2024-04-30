@@ -73,7 +73,7 @@ APP-ASG-NAME             = "Three-Tier-APP-ASG"
 # CLOUDFRONT
 DOMAIN-NAME = "ticketjo.shop"
 CDN-NAME    = "Three-Tier-CDN"
-ALB-NAME    = "web-alb"
+ALB-NAME    = "Web-elb"
 
 # WAF
 WEB-ACL-NAME = "Three-Tier-WAF"

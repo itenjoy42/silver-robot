@@ -67,7 +67,7 @@ module "rds" {
 }
 
 module "alb" {
-  source = "./modules/alb-tg"
+  source = "./modules/aws-alb"
 
   public-subnet-name1 = var.PUBLIC-SUBNET1
   public-subnet-name2 = var.PUBLIC-SUBNET2
@@ -125,7 +125,7 @@ module "waf-cdn-acm-route53" {
   cdn-name     = var.CDN-NAME
   alb-dns-name = module.alb.alb_dns_name
   web_acl_name = var.WEB-ACL-NAME
-  alb-name     = var.ALB-NAME
+  web-alb-name = var.ALB-NAME
 
   providers = {
     aws = aws.us-east-1
