@@ -13,7 +13,7 @@ resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
   }
   #provider = aws.cloudfront #추가
 
-  #aliases         = [var.domain-name, "www.${var.domain-name}"]
+  aliases         = [var.domain-name, "*.${var.domain-name}"]
   enabled         = true
   is_ipv6_enabled = true
   comment         = "CDN ALB Distribution"
