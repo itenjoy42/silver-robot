@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
   origin {
-    domain_name = data.aws_lb.web-elb.dns_name
+    domain_name = var.alb-dns-name
     origin_id   = "Web-elb"
 
     custom_origin_config {
@@ -11,8 +11,9 @@ resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
     }
 
   }
+  #provider = aws.cloudfront #추가
 
-  aliases         = [var.domain-name, "www.${var.domain-name}"]
+  #aliases         = [var.domain-name, "www.${var.domain-name}"]
   enabled         = true
   is_ipv6_enabled = true
   comment         = "CDN ALB Distribution"
@@ -42,6 +43,7 @@ resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
   }
 
   viewer_certificate {
+    #cloudfront_default_certificate = true #추가
     acm_certificate_arn      = data.aws_acm_certificate.cert.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
@@ -53,5 +55,6 @@ resource "aws_cloudfront_distribution" "cdn-web-elb-distribution" {
     Name = var.cdn-name
   }
 
-  # depends_on = [aws_acm_certificate_validation.cert]
+  #depends_on = [ aws_acm_certificate_validation.cert ]
+  #depends_on = [ data.aws_lb.web-elb ]
 }
